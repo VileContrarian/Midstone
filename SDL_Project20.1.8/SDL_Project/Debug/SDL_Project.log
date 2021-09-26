@@ -1,0 +1,23 @@
+﻿  Ball.cpp
+  Body.cpp
+  GameManager.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Scene3.h(11,1): warning C4005: 'NUM_OBJECTS': macro redefinition
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Scene2.h(9): message : see previous definition of 'NUM_OBJECTS'
+  Main.cpp
+  MMath.cpp
+  Randomizer.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Randomizer.h(56,40): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Scene0.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Randomizer.h(56,40): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Scene1.cpp
+  Scene2.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Randomizer.h(56,40): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Scene3.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Randomizer.h(56,40): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Scene4.cpp
+C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\SDL_Project\Randomizer.h(56,40): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Timer.cpp
+  VMath.cpp
+  Window.cpp
+  Generating Code...
+  SDL_Project.vcxproj -> C:\Users\Mack\Desktop\Programming\C++\SDL_Project20.1.8\Debug\SDL_Project.exe
