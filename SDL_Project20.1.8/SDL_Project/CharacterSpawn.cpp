@@ -1,6 +1,6 @@
 #include "CharacterSpawn.h"
 
-CharacterSpawn::CharacterSpawn()
+CharacterSpawn::CharacterSpawn(Vec3 location)
 {
 }
 
