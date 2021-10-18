@@ -24,7 +24,7 @@ bool Scene1::OnCreate() {
 
 
 	IMG_Init(IMG_INIT_PNG);
-	SDL_Surface* birdImage = IMG_Load("flappybird1.png");
+	SDL_Surface* birdImage = IMG_Load("Test.png");
 	SDL_Surface* cliffImage = IMG_Load("cliff.png");
 	if (birdImage == nullptr || cliffImage == nullptr) {
 		std::cerr << "Can't open the image" << std::endl;

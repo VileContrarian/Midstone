@@ -18,8 +18,8 @@ GameManager::GameManager() {
 
 /// In this OnCreate() method, fuction, subroutine, whatever the word, 
 bool GameManager::OnCreate() {
-	const int SCREEN_WIDTH = 1280;
-	const int SCREEN_HEIGHT = 720;
+	const int SCREEN_WIDTH = 995;
+	const int SCREEN_HEIGHT = 560;
 	windowPtr = new Window(SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (windowPtr == nullptr) {
 		OnDestroy();
@@ -36,7 +36,7 @@ bool GameManager::OnCreate() {
 		return false;
 	}
 
-	currentScene = new Scene4(windowPtr->GetSDL_Window());
+	currentScene = new Scene0(windowPtr->GetSDL_Window());
 	if (currentScene == nullptr) {
 		OnDestroy();
 		return false;

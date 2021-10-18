@@ -4,16 +4,15 @@
 #include "MMath.h"
 #include "Scene.h"
 #include <SDL.h>
-#include "Ball.h"
+#include "Body.h"
 
 using namespace MATH;
-#define NUM_BALLS 1
 
 class Scene0 : public Scene {
 private:
 	SDL_Window *window;
 	Matrix4 projectionMatrix;
-	Ball* ballArray[NUM_BALLS];
+	Body* background;
 	SDL_Renderer* renderer;
 	
 public:
