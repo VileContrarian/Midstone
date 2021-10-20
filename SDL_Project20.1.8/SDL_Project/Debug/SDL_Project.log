@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿  GameManager.cpp
 C:\Users\Nick\Documents\GitHub\Midstone\SDL_Project20.1.8\SDL_Project\Scene3.h(11,1): warning C4005: 'NUM_OBJECTS': macro redefinition
 C:\Users\Nick\Documents\GitHub\Midstone\SDL_Project20.1.8\SDL_Project\Scene2.h(9): message : see previous definition of 'NUM_OBJECTS'
   SDL_Project.vcxproj -> C:\Users\Nick\Documents\GitHub\Midstone\SDL_Project20.1.8\Debug\SDL_Project.exe
+=======
+﻿  SDL_Project.vcxproj -> C:\Users\unzy9\Documents\Midstone\SDL_Project20.1.8\Debug\SDL_Project.exe
+>>>>>>> Tanner

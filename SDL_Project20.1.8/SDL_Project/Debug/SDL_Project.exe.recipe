@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
+<<<<<<< HEAD
   <ProjectOutputs>C:\Users\Nick\Documents\GitHub\Midstone\SDL_Project20.1.8\Debug\SDL_Project.exe</ProjectOutputs>
+=======
+  <ProjectOutputs>C:\Users\unzy9\Documents\Midstone\SDL_Project20.1.8\Debug\SDL_Project.exe</ProjectOutputs>
+>>>>>>> Tanner
   <ContentFiles></ContentFiles>
   <SatelliteDlls></SatelliteDlls>
   <NonRecipeFileRefs></NonRecipeFileRefs>
