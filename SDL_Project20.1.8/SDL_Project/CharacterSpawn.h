@@ -12,8 +12,8 @@ private:
 	bool playerIsDead;
 	//location vec3 will represent the location of the actual spawn, as well as player's respawn location for checkpoints
 	Vec3 location;
-	
-	bool checkpointReached;
+	//This boolean will throw true if the player has managed to reach a checkpoint, setting the player's new spawn to that location.
+	bool checkpointWasReached;
 public:
 	CharacterSpawn(Vec3 location);
 	~CharacterSpawn();
