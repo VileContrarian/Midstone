@@ -22,7 +22,11 @@ int main(int argc, char* args[])
 	Vec2 PAccel;
 	PAccel.set(0,0);
 
-	Actor Player(100.0, 50.0, PAccel,0.0f, Background);
+	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
+	Actor entities[4] = { Actor(0, 0,PAccel,0.0f, ground),
+						  Actor(30, 0,PAccel,0.0f, ground),
+						  Actor(30, 30,PAccel,0.0f, ground),
+						  Actor(30, 60,PAccel,0.0f, ground) };
 
 	bool gameRunning = true;
 
@@ -38,8 +42,12 @@ int main(int argc, char* args[])
 		}
 
 		window.clear();
-		//window.renderBack(Background);
-		window.renderAct(Player);
+		window.renderBack(Background);
+
+		for (int i = 0; i < 4; i++)
+		{
+			window.renderAct(entities[i]);
+		}
 		window.display();
 
 	}
