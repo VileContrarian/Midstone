@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include <vector>
 
 #include "Window.h"
 #include "Actor.h"
@@ -23,11 +24,22 @@ int main(int argc, char* args[])
 	PAccel.set(0,0);
 
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
-	Actor entities[4] = { Actor(0, 0,PAccel,0.0f, ground),
-						  Actor(30, 0,PAccel,0.0f, ground),
-						  Actor(30, 30,PAccel,0.0f, ground),
-						  Actor(30, 60,PAccel,0.0f, ground) };
 
+	//Actor entities[4] = { Actor(0, 0,PAccel,0.0f, ground),
+	//					  Actor(30, 0,PAccel,0.0f, ground),
+	//					  Actor(30, 30,PAccel,0.0f, ground),
+	//					  Actor(30, 60,PAccel,0.0f, ground) };
+
+	//Dynamic version of the actors array (Tanner)
+	std::vector<Actor> entitiees = { Actor(0, 0,PAccel,0.0f, ground),
+									 Actor(30, 0,PAccel,0.0f, ground),
+								     Actor(30, 30,PAccel,0.0f, ground),
+									 Actor(30, 60,PAccel,0.0f, ground) };;
+	{
+		Actor william(100, 50, PAccel, 0.0f, ground);
+
+		entitiees.push_back(william);
+	}
 	bool gameRunning = true;
 
 	SDL_Event event;
@@ -44,9 +56,9 @@ int main(int argc, char* args[])
 		window.clear();
 		window.renderBack(Background);
 
-		for (int i = 0; i < 4; i++)
+		for (Actor& e : entitiees)
 		{
-			window.renderAct(entities[i]);
+			window.renderAct(e);
 		}
 		window.display();
 
