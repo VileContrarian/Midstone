@@ -31,12 +31,12 @@ int main(int argc, char* args[])
 	//					  Actor(30, 60,PAccel,0.0f, ground) };
 
 	//Dynamic version of the actors array (Tanner)
-	std::vector<Actor> entitiees = { Actor(0, 0,PAccel,0.0f, ground),
-									 Actor(30, 0,PAccel,0.0f, ground),
-								     Actor(30, 30,PAccel,0.0f, ground),
-									 Actor(30, 60,PAccel,0.0f, ground) };;
+	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),PAccel,0.0f, ground),
+									 Actor(Vector2f(30, 0),PAccel,0.0f, ground),
+								     Actor(Vector2f(30, 30),PAccel,0.0f, ground),
+									 Actor(Vector2f(30, 60),PAccel,0.0f, ground) };;
 	{
-		Actor william(100, 50, PAccel, 0.0f, ground);
+		Actor william(Vector2f(100, 50), PAccel, 0.0f, ground);
 
 		entitiees.push_back(william);
 	}
