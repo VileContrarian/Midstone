@@ -153,6 +153,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="CharacterSpawn.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

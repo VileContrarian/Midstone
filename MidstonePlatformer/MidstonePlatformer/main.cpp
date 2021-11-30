@@ -5,6 +5,7 @@
 
 #include "Window.h"
 #include "Actor.h"
+#include "Utilities.h"
 
 int main(int argc, char* args[])
 {
@@ -44,14 +45,33 @@ int main(int argc, char* args[])
 
 	SDL_Event event;
 
+	const float timeStep = 0.01f;
+	float accumulator = 0.0f;
+	float currentTime = utilities::hireTimeInSeconds();
+
 	while (gameRunning)
 	{
+		int startTicks = SDL_GetTicks();
+
+		float newTime = utilities::hireTimeInSeconds();
+		float frameTime = newTime - currentTime;
+
+		currentTime = newTime;
+
+		accumulator += frameTime;
+
+		while (accumulator >= timeStep)
+		{
 		// Get our controls and events
 		while (SDL_PollEvent(&event))
-		{
+			{
 			if (event.type == SDL_QUIT)
 				gameRunning = false;
+			}
+		accumulator -= timeStep;
 		}
+		
+		const float alpha = accumulator / timeStep; //50%
 
 		window.clear();
 		window.renderBack(Background);
@@ -61,6 +81,11 @@ int main(int argc, char* args[])
 			window.renderAct(e);
 		}
 		window.display();
+
+		int frameTicks = SDL_GetTicks() - startTicks;
+
+		if (frameTicks < 1000 / window.getRefreshRate())
+			SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
 
 	}
 
