@@ -147,12 +147,15 @@
     <ClCompile Include="CharacterSpawn.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="renderwindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="CharacterSpawn.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Window.h" />

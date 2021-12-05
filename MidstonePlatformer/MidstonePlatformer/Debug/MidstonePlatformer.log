@@ -1,1 +1,3 @@
-﻿  MidstonePlatformer.vcxproj -> C:\Users\user\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe
+﻿  main.cpp
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Utilities.h(8,11): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+  MidstonePlatformer.vcxproj -> C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe
