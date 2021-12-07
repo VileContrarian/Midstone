@@ -1,1 +1,9 @@
-﻿  MidstonePlatformer.vcxproj -> C:\Users\user\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe
+﻿  Actor.cpp
+  Player.cpp
+  main.cpp
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Utilities.h(8,11): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+  renderwindow.cpp
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\renderwindow.cpp(67,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\renderwindow.cpp(68,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  MidstonePlatformer.vcxproj -> C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe

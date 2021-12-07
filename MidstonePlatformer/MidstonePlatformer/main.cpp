@@ -18,11 +18,13 @@ int main(int argc, char* args[])
 	RenderWindow window("MidstonePlatformer", 1280, 720);
 
 	SDL_Texture* Background = window.loadTexture("assets/Starmap.png");
-
 	SDL_Texture* ground = window.loadTexture("assets/ground_grass_1.png");
+	SDL_Texture* character = window.loadTexture("assets/char.png");
 
-	Vec2 PAccel;
-	PAccel.set(0,0);
+	Vec2 PAccel, PSpawn, BAccel;
+	BAccel.set(0, 0);
+	PAccel.set(0.5, 0);
+	PSpawn.set(100, 50);
 
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
 
@@ -32,15 +34,15 @@ int main(int argc, char* args[])
 	//					  Actor(30, 60,PAccel,0.0f, ground) };
 
 	//Dynamic version of the actors array (Tanner)
-	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),PAccel,0.0f, ground),
-									 Actor(Vector2f(30, 0),PAccel,0.0f, ground),
-								     Actor(Vector2f(30, 30),PAccel,0.0f, ground),
-									 Actor(Vector2f(30, 60),PAccel,0.0f, ground) };;
-	{
-		Actor william(Vector2f(100, 50), PAccel, 0.0f, ground);
+	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),0.0f, ground),
+									 Actor(Vector2f(30, 0),0.0f, ground),
+									 Actor(Vector2f(30, 30),0.0f, ground),
+									 Actor(Vector2f(30, 60),0.0f, ground) };;
 
-		entitiees.push_back(william);
-	}
+	Actor william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
+	william.SetFrame(0,0,32,40);
+	//entitiees.push_back(william);
+
 	bool gameRunning = true;
 
 	SDL_Event event;
@@ -51,6 +53,7 @@ int main(int argc, char* args[])
 
 	while (gameRunning)
 	{
+		
 		int startTicks = SDL_GetTicks();
 
 		float newTime = utilities::hireTimeInSeconds();
@@ -62,31 +65,36 @@ int main(int argc, char* args[])
 
 		while (accumulator >= timeStep)
 		{
-		// Get our controls and events
-		while (SDL_PollEvent(&event))
+			// Get our controls and events
+			while (SDL_PollEvent(&event))
 			{
-			if (event.type == SDL_QUIT)
-				gameRunning = false;
+				if (event.type == SDL_QUIT)
+					gameRunning = false;
 			}
-		accumulator -= timeStep;
+			accumulator -= timeStep;
 		}
-		
+
 		const float alpha = accumulator / timeStep; //50%
 
 		window.clear();
 		window.renderBack(Background);
+		
 
 		for (Actor& e : entitiees)
 		{
 			window.renderAct(e);
 		}
+		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
+		std::cout << william.getPos().x << std::endl;
+		window.renderAct(william);
+
 		window.display();
 
 		int frameTicks = SDL_GetTicks() - startTicks;
 
 		if (frameTicks < 1000 / window.getRefreshRate())
 			SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
-
+		
 	}
 
 	window.cleanUp();
