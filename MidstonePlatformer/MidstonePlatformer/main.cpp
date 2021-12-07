@@ -34,12 +34,12 @@ int main(int argc, char* args[])
 	//					  Actor(30, 60,PAccel,0.0f, ground) };
 
 	//Dynamic version of the actors array (Tanner)
-	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),Vector2f(BAccel.x, BAccel.y),0.0f, ground),
-									 Actor(Vector2f(30, 0),Vector2f(BAccel.x, BAccel.y),0.0f, ground),
-									 Actor(Vector2f(30, 30),Vector2f(BAccel.x, BAccel.y),0.0f, ground),
-									 Actor(Vector2f(30, 60),Vector2f(BAccel.x, BAccel.y),0.0f, ground) };;
+	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),0.0f, ground),
+									 Actor(Vector2f(30, 0),0.0f, ground),
+									 Actor(Vector2f(30, 30),0.0f, ground),
+									 Actor(Vector2f(30, 60),0.0f, ground) };;
 
-	Actor william(Vector2f(PSpawn.x, PSpawn.y), Vector2f(PAccel.x, PAccel.y), 0.0f, character);
+	Actor william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
 	william.SetFrame(0,0,32,40);
 	//entitiees.push_back(william);
 
@@ -84,7 +84,7 @@ int main(int argc, char* args[])
 		{
 			window.renderAct(e);
 		}
-		william.UpdatePos();
+		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 		std::cout << william.getPos().x << std::endl;
 		window.renderAct(william);
 

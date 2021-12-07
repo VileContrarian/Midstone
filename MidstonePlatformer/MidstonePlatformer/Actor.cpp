@@ -2,8 +2,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-Actor::Actor(Vector2f p_pos, Vector2f vel_, float mass_, SDL_Texture* p_tex)
-:pos(p_pos) , vel(vel_) , tex(p_tex)
+Actor::Actor(Vector2f p_pos, float mass_, SDL_Texture* p_tex)
+:pos(p_pos), tex(p_tex)
 {
 	currentFrame.x = 0;
 	currentFrame.y = 0;
@@ -29,7 +29,7 @@ void Actor::SetFrame(int x_,int y_,int w_,int h_) {
 	currentFrame.h = h_;
 }
 
-void Actor::UpdatePos() {
+void Actor::UpdatePos(Vector2f vel) {
 	pos.x += vel.x;
 	pos.y += vel.y;
 }
