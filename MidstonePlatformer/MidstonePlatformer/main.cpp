@@ -24,9 +24,9 @@ int main(int argc, char* args[])
 
 	Vec2 PAccel, PSpawn, BAccel,EAceel;
 	BAccel.set(0, 0);
-	PAccel.set(0, 0);
-	EAceel.set(0, 0); //step of enemy
-	PSpawn.set(100, 50);
+	PAccel.set(0.5, 0);
+	EAceel.set(0.3, 0); //step of enemy
+	PSpawn.set(0, 115);
 
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
 
@@ -36,15 +36,18 @@ int main(int argc, char* args[])
 	//					  Actor(30, 60,PAccel,0.0f, ground) };
 
 	//Dynamic version of the actors array (Tanner)
-	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),0.0f, ground),
-									 Actor(Vector2f(30, 0),0.0f, ground),
-									 Actor(Vector2f(30, 30),0.0f, ground),
-									 Actor(Vector2f(30, 60),0.0f, ground) };;
+	std::vector<Actor> entitiees = { Actor(Vector2f(0, 150),0.0f, ground),
+									 Actor(Vector2f(30, 150),0.0f, ground),
+									 Actor(Vector2f(90, 130),0.0f, ground),
+									 Actor(Vector2f(150, 115),0.0f, ground),
+									 Actor(Vector2f(210, 100),0.0f, ground),
+									 Actor(Vector2f(265, 85),0.0f, ground),
+									 Actor(Vector2f(295, 85),0.0f, ground) };;
 
 	Actor william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
 	william.SetFrame(0,0,32,40);
 	//entitiees.push_back(william);
-	Actor enemy(Vector2f(100, 50), 0.0f, guy);
+	Actor enemy(Vector2f(140, 50), 0.0f, guy);
 	enemy.SetFrame(0, 0, 30, 35);
 
 	bool gameRunning = true;
@@ -66,58 +69,7 @@ int main(int argc, char* args[])
 		currentTime = newTime;
 
 		accumulator += frameTime;
-		SDL_Event event;
-		SDL_PollEvent(&event);
-		if (event.type == SDL_KEYDOWN) {
-			switch (event.key.keysym.scancode) {
-			case SDL_SCANCODE_Q:
-				break;
-			case SDL_SCANCODE_W:
-				PAccel.y = -1;
-				break;
 
-			case SDL_SCANCODE_S:
-				PAccel.y = 1;
-				break;
-
-			case SDL_SCANCODE_A:
-				PAccel.x = -1;
-				break;
-
-			case SDL_SCANCODE_D:
-				PAccel.x = 1;
-				break;
-
-			default:
-				break;
-			}
-		}
-
-		if (event.type == SDL_KEYUP) {
-			switch (event.key.keysym.scancode) {
-			case SDL_SCANCODE_Q:
-				break;
-			case SDL_SCANCODE_W:
-				PAccel.y = 0;
-				break;
-
-			case SDL_SCANCODE_S:
-				PAccel.y = 0;
-				break;
-
-			case SDL_SCANCODE_A:
-				PAccel.x = 0;
-				break;
-
-			case SDL_SCANCODE_D:
-				PAccel.x = 0;
-				break;
-			default:
-				break;
-			}
-		}
-		//william.UpdatePos(GM->PControls());
-		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 		while (accumulator >= timeStep)
 		{
 			// Get our controls and events
@@ -139,7 +91,7 @@ int main(int argc, char* args[])
 		{
 			window.renderAct(e);
 		}
-		//william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
+		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 		enemy.UpdatePos(Vector2f(EAceel.x, EAceel.y));
 		//std::cout << william.getPos().x << std::endl;
 		//enemy moves by y
@@ -157,7 +109,7 @@ int main(int argc, char* args[])
 			PAccel.set(0.5, 0);
 		}
 
-		//calculate distanse
+		//calculate distance
 		float x = william.getPos().x - enemy.getPos().x;
 		float y = william.getPos().y - enemy.getPos().y;
 		float hyp = sqrt(x * x + y * y); // distance
@@ -167,9 +119,10 @@ int main(int argc, char* args[])
 		
 		if (hyp > 30 && hyp < 100) {
 				
-			//std::cout << "move eneny" << std::endl;
+			std::cout << "move enemy" << std::endl;
 			enemy.UpdatePos(Vector2f(x, y));
 		}
+
 		
 		window.renderAct(william);
 		window.renderAct(enemy);
