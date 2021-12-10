@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+
 Actor::Actor(Vector2f p_pos, float mass_, SDL_Texture* p_tex)
 :pos(p_pos), tex(p_tex)
 {
@@ -33,3 +34,4 @@ void Actor::UpdatePos(Vector2f vel) {
 	pos.x += vel.x;
 	pos.y += vel.y;
 }
+

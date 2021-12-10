@@ -20,10 +20,12 @@ int main(int argc, char* args[])
 	SDL_Texture* Background = window.loadTexture("assets/Starmap.png");
 	SDL_Texture* ground = window.loadTexture("assets/ground_grass_1.png");
 	SDL_Texture* character = window.loadTexture("assets/char.png");
+	SDL_Texture* guy = window.loadTexture("assets/char.png");
 
-	Vec2 PAccel, PSpawn, BAccel;
+	Vec2 PAccel, PSpawn, BAccel,EAceel;
 	BAccel.set(0, 0);
 	PAccel.set(0.5, 0);
+	EAceel.set(0.3, 0); //step of enemy
 	PSpawn.set(100, 50);
 
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
@@ -42,6 +44,8 @@ int main(int argc, char* args[])
 	Actor william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
 	william.SetFrame(0,0,32,40);
 	//entitiees.push_back(william);
+	Actor enemy(Vector2f(100, 50), 0.0f, guy);
+	enemy.SetFrame(0, 0, 30, 35);
 
 	bool gameRunning = true;
 
@@ -85,9 +89,39 @@ int main(int argc, char* args[])
 			window.renderAct(e);
 		}
 		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
-		std::cout << william.getPos().x << std::endl;
-		window.renderAct(william);
+		enemy.UpdatePos(Vector2f(EAceel.x, EAceel.y));
+		//std::cout << william.getPos().x << std::endl;
+		//enemy moves by y
+		if (enemy.getPos().x > 100) {
+			EAceel.set( -0.3,0);
+		}
+		else if (enemy.getPos().x < 40) {
+			EAceel.set(0.3,0);
+		}
 
+		if (william.getPos().x > 320) {
+			PAccel.set(-0.5, 0);
+		}
+		else if (william.getPos().x < 50) {
+			PAccel.set(0.5, 0);
+		}
+
+		//calculate distanse
+		float x = william.getPos().x - enemy.getPos().x;
+		float y = william.getPos().y - enemy.getPos().y;
+		float hyp = sqrt(x * x + y * y); // distance
+		x /= hyp;
+		y /= hyp;
+
+		
+		if (hyp > 30 && hyp < 100) {
+				
+			std::cout << "move eneny" << std::endl;
+			enemy.UpdatePos(Vector2f(x, y));
+		}
+		
+		window.renderAct(william);
+		window.renderAct(enemy);
 		window.display();
 
 		int frameTicks = SDL_GetTicks() - startTicks;

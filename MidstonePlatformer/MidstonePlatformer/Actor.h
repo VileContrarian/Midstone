@@ -19,6 +19,7 @@ public:
 	void SetFrame(int x_, int y_, int w_, int h_);
 
 	void UpdatePos(Vector2f vel);
+	
 private:
 	Vector2f pos;
 	SDL_Rect currentFrame;
