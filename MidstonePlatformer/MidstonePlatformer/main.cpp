@@ -24,7 +24,7 @@ int main(int argc, char* args[])
 
 	Vec2 PAccel, PSpawn, BAccel,EAceel;
 	BAccel.set(0, 0);
-	PAccel.set(0.5, 0);
+	PAccel.set(0, 0);
 	EAceel.set(0.3, 0); //step of enemy
 	PSpawn.set(0, 115);
 
@@ -70,6 +70,59 @@ int main(int argc, char* args[])
 
 		accumulator += frameTime;
 
+		SDL_Event event;
+		SDL_PollEvent(&event);
+		if (event.type == SDL_KEYDOWN) {
+			switch (event.key.keysym.scancode) {
+			case SDL_SCANCODE_Q:
+				break;
+			case SDL_SCANCODE_W:
+				PAccel.y = -1;
+				break;
+
+			case SDL_SCANCODE_S:
+				PAccel.y = 1;
+				break;
+
+			case SDL_SCANCODE_A:
+				PAccel.x = -1;
+				break;
+
+			case SDL_SCANCODE_D:
+				PAccel.x = 1;
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (event.type == SDL_KEYUP) {
+			switch (event.key.keysym.scancode) {
+			case SDL_SCANCODE_Q:
+				break;
+			case SDL_SCANCODE_W:
+				PAccel.y = 0;
+				break;
+
+			case SDL_SCANCODE_S:
+				PAccel.y = 0;
+				break;
+
+			case SDL_SCANCODE_A:
+				PAccel.x = 0;
+				break;
+
+			case SDL_SCANCODE_D:
+				PAccel.x = 0;
+				break;
+			default:
+				break;
+			}
+		}
+		//william.UpdatePos(GM->PControls());
+		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
+
 		while (accumulator >= timeStep)
 		{
 			// Get our controls and events
@@ -91,7 +144,7 @@ int main(int argc, char* args[])
 		{
 			window.renderAct(e);
 		}
-		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
+		//william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 		enemy.UpdatePos(Vector2f(EAceel.x, EAceel.y));
 		//std::cout << william.getPos().x << std::endl;
 		//enemy moves by y
@@ -102,15 +155,15 @@ int main(int argc, char* args[])
 			EAceel.set(0.3,0.0);
 		}
 
-		if (william.getPos().x > 320) {
+		/*if (william.getPos().x > 320) {
 			PAccel.set(-0.5, 0);
 		}
 		else if (william.getPos().x < 50) {
 			PAccel.set(0.5, 0);
-		}
+		}*/
 
 		//calculate distance
-		float x = william.getPos().x - enemy.getPos().x;
+		float x = william.getPos().x + 30 - enemy.getPos().x;
 		float y = william.getPos().y - enemy.getPos().y;
 		float hyp = sqrt(x * x + y * y); // distance
 		x /= hyp;
@@ -119,7 +172,7 @@ int main(int argc, char* args[])
 		
 		if (hyp > 30 && hyp < 100) {
 				
-			std::cout << "move enemy" << std::endl;
+			//std::cout << "move enemy" << std::endl;
 			enemy.UpdatePos(Vector2f(x, y));
 		}
 
