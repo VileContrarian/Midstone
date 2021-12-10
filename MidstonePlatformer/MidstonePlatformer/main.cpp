@@ -93,10 +93,10 @@ int main(int argc, char* args[])
 		//std::cout << william.getPos().x << std::endl;
 		//enemy moves by y
 		if (enemy.getPos().x > 100) {
-			EAceel.set( -0.3,0);
+			EAceel.set(-0.3,0.0);
 		}
 		else if (enemy.getPos().x < 40) {
-			EAceel.set(0.3,0);
+			EAceel.set(0.3,0.0);
 		}
 
 		if (william.getPos().x > 320) {
