@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="CharacterSpawn.cpp" />
-    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="renderwindow.cpp" />
@@ -153,7 +152,6 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="CharacterSpawn.h" />
-    <ClInclude Include="Collision.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vector.h" />
