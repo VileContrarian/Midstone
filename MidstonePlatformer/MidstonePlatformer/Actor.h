@@ -20,7 +20,7 @@ public:
 
 	void UpdatePos(Vector2f vel);
 	
-private:
+protected:
 	Vector2f pos;
 	SDL_Rect currentFrame;
 	SDL_Texture* tex;

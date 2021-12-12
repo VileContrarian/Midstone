@@ -5,6 +5,7 @@
 
 #include "Window.h"
 #include "Actor.h"
+#include "Player.h"
 #include "Utilities.h"
 
 int main(int argc, char* args[])
@@ -44,7 +45,7 @@ int main(int argc, char* args[])
 									 Actor(Vector2f(265, 85),0.0f, ground),
 									 Actor(Vector2f(295, 85),0.0f, ground) };;
 
-	Actor william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
+	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
 	william.SetFrame(0,0,32,40);
 	//entitiees.push_back(william);
 	Actor enemy(Vector2f(140, 50), 0.0f, guy);

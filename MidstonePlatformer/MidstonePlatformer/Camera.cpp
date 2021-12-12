@@ -4,8 +4,8 @@ Camera* Camera::s_Instance = nullptr;
 
 void Camera::Update(float dt) {
 	if (m_Target != nullptr) {
-		m_ViewBox.x = m_Target->x - SCREEN_WIDTH / 2;
-		m_ViewBox.y = m_Target->y - SCREEN_HEIGHT / 2;
+		m_ViewBox.x = m_Target->x - 1280 / 2;
+		m_ViewBox.y = m_Target->y - 720 / 2;
 
 		if (m_ViewBox.x < 0) {
 			m_ViewBox.x = 0;
@@ -15,12 +15,12 @@ void Camera::Update(float dt) {
 			m_ViewBox.y = 0;
 		}
 
-		if (m_ViewBox.x > (2 * SCREEN_WIDTH - m_ViewBox.w)) {
-			m_ViewBox.x = (2 * SCREEN_WIDTH - m_ViewBox.w);
+		if (m_ViewBox.x > (2 * 1280 - m_ViewBox.w)) {
+			m_ViewBox.x = (2 * 1280 - m_ViewBox.w);
 		}
 
-		if (m_ViewBox.y > (SCREEN_HEIGHT - m_ViewBox.h)) {
-			m_ViewBox.y = (SCREEN_HEIGHT - m_ViewBox.h);
+		if (m_ViewBox.y > (720 - m_ViewBox.h)) {
+			m_ViewBox.y = (720 - m_ViewBox.h);
 		}
 
 		m_Position = Vector2f(m_ViewBox.x, m_ViewBox.y);

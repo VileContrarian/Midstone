@@ -16,7 +16,7 @@ public:
 	inline static Camera* GetInstance() { return s_Instance = (s_Instance != nullptr) ? s_Instance : new Camera(); }
 
 private:
-	Camera() {m_ViewBox = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; }
+	Camera() {m_ViewBox = { 0, 0, 1280, 720 }; }
 	Point* m_Target;
 	Vector2f m_Position;
 	SDL_Rect m_ViewBox;
