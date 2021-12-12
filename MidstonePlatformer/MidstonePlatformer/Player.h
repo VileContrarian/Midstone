@@ -9,7 +9,6 @@ using namespace MATH;
 class Player : public Actor
 {
 public:
-	Player();
 	void Update();
 protected:
 	std::string pName;

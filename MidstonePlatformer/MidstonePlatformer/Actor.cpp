@@ -3,13 +3,9 @@
 #include <SDL_image.h>
 
 
-<<<<<<< Updated upstream
+
 Actor::Actor(Vector2f p_pos, float mass_, SDL_Texture* p_tex)
 :pos(p_pos), tex(p_tex)
-=======
-Actor::Actor(Vector2f p_pos, Vec2 accel_, float mass_, SDL_Texture * p_tex)
-	:pos(p_pos), tex(p_tex)
->>>>>>> Stashed changes
 {
 	currentFrame.x = 0;
 	currentFrame.y = 0;
@@ -26,7 +22,6 @@ SDL_Texture* Actor::getTex()
 SDL_Rect Actor::getCurrentFrame()
 {
 	return currentFrame;
-<<<<<<< Updated upstream
 }
 
 void Actor::SetFrame(int x_,int y_,int w_,int h_) {
@@ -40,7 +35,3 @@ void Actor::UpdatePos(Vector2f vel) {
 	pos.x += vel.x;
 	pos.y += vel.y;
 }
-
-=======
-}
->>>>>>> Stashed changes
