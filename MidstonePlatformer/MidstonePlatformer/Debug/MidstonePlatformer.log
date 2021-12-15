@@ -1,18 +1,11 @@
-﻿  Camera.cpp
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Camera.cpp(7,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Camera.cpp(8,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Camera.cpp(26,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Camera.cpp(26,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Engine.cpp
-  main.cpp
+﻿  main.cpp
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Utilities.h(8,11): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(29,19): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(153,23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(156,22): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(56,12): warning C4101: 'event': unreferenced local variable
-  renderwindow.cpp
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\renderwindow.cpp(67,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\renderwindow.cpp(68,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  LINK : C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe not found or not built by the last incremental link; performing full link
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(30,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(134,134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(134,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(135,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(135,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(188,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(191,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(59,12): warning C4101: 'event': unreferenced local variable
   MidstonePlatformer.vcxproj -> C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe

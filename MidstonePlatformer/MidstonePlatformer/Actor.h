@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Math.h"
+#include "Collider.h"
 using namespace MATH;
 
 class Actor

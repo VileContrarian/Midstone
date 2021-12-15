@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Actor.h"
 #include "Player.h"
+#include "Collider.h"
 #include "Utilities.h"
 
 int main(int argc, char* args[])
@@ -23,11 +24,13 @@ int main(int argc, char* args[])
 	SDL_Texture* character = window.loadTexture("assets/char.png");
 	SDL_Texture* guy = window.loadTexture("assets/char.png");
 
-	Vec2 PAccel, PSpawn, BAccel,EAceel;
+	Vec2 PAccel, PSpawn, BAccel, EAceel;
 	BAccel.set(0, 0);
 	PAccel.set(0, 0);
 	EAceel.set(0.3, 0); //step of enemy
 	PSpawn.set(0, 115);
+
+	Collider collide;
 
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
 
@@ -46,7 +49,7 @@ int main(int argc, char* args[])
 									 Actor(Vector2f(295, 85),0.0f, ground) };;
 
 	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
-	william.SetFrame(0,0,32,40);
+	william.SetFrame(0, 0, 32, 40);
 	//entitiees.push_back(william);
 	Actor enemy(Vector2f(140, 50), 0.0f, guy);
 	enemy.SetFrame(0, 0, 30, 35);
@@ -61,7 +64,7 @@ int main(int argc, char* args[])
 
 	while (gameRunning)
 	{
-		
+
 		int startTicks = SDL_GetTicks();
 
 		float newTime = utilities::hireTimeInSeconds();
@@ -121,6 +124,38 @@ int main(int argc, char* args[])
 				break;
 			}
 		}
+
+		bool hasCollided = false;
+		//check player against each collidable tile
+	   //if (SDL_IntersectRect(&movedPlayer, &c->getComponent<CollisionComponent>().getCollider(), &intersection))
+		for (Actor& e : entitiees)
+		{
+
+			Vec4 Twilliam(william.getPos().x + PAccel.x, william.getPos().y + PAccel.y, william.getCurrentFrame().h, william.getCurrentFrame().w);
+			Vec4 ev(e.getPos().x, e.getPos().y, e.getCurrentFrame().h, e.getCurrentFrame().w);
+
+			//rect1.x < rect2.x + rect2.w &&
+			//rect1.x + rect1.w > rect2.x&&
+			//rect1.y < rect2.y + rect2.h &&
+			//rect1.h + rect1.y > rect2.y
+
+			if (william.getPos().x < e.getPos().x + 32 &&
+				william.getPos().x + 32 > e.getPos().x &&
+				william.getPos().y < e.getPos().y + 32 &&
+				william.getPos().y + 45 > e.getPos().y) {
+				std::cout << "Collide" << std::endl;
+			}
+			//if (collide.Collide(Twilliam, ev))
+			//{
+			//	//PAccel.y = 0.0f;
+			//	hasCollided = true;
+			//	//std::cout << "Collide" << std::endl;
+			//	//std::cout << intersection.x << std::endl;
+			//}
+			else {
+				std::cout << "No Collide" << std::endl;
+			}
+		}
 		//william.UpdatePos(GM->PControls());
 		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 
@@ -138,8 +173,8 @@ int main(int argc, char* args[])
 		const float alpha = accumulator / timeStep; //50%
 
 		window.clear();
-		window.renderBack(Background);
-		
+		//window.renderBack(Background);
+
 
 		for (Actor& e : entitiees)
 		{
@@ -149,19 +184,19 @@ int main(int argc, char* args[])
 		enemy.UpdatePos(Vector2f(EAceel.x, EAceel.y));
 		//std::cout << william.getPos().x << std::endl;
 		//enemy moves by y
-		if (enemy.getPos().x > 100) {
-			EAceel.set(-0.3,0.0);
+		if (enemy.getPos().x > 300) {
+			EAceel.set(-0.3, 0.0);
 		}
-		else if (enemy.getPos().x < 40) {
-			EAceel.set(0.3,0.0);
+		else if (enemy.getPos().x < -8) {
+			EAceel.set(0.3, 0.0);
 		}
 
-		/*if (william.getPos().x > 320) {
+		if (william.getPos().x > 300) {
 			PAccel.set(-0.5, 0);
 		}
-		else if (william.getPos().x < 50) {
+		else if (william.getPos().x < -8) {
 			PAccel.set(0.5, 0);
-		}*/
+		}
 
 		//calculate distance
 		float x = william.getPos().x + 30 - enemy.getPos().x;
@@ -170,14 +205,14 @@ int main(int argc, char* args[])
 		x /= hyp;
 		y /= hyp;
 
-		
+
 		if (hyp > 30 && hyp < 100) {
-				
+
 			//std::cout << "move enemy" << std::endl;
 			enemy.UpdatePos(Vector2f(x, y));
 		}
 
-		
+
 		window.renderAct(william);
 		window.renderAct(enemy);
 		window.display();
@@ -186,7 +221,7 @@ int main(int argc, char* args[])
 
 		if (frameTicks < 1000 / window.getRefreshRate())
 			SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
-		
+
 	}
 
 	window.cleanUp();

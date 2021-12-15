@@ -17,7 +17,9 @@ public:
 	void renderBack(SDL_Texture* p_tex);
 	void renderAct(Actor& p_entity);
 	void display();
+
+	SDL_Renderer* renderer;
 private:
 	SDL_Window* window;
-	SDL_Renderer* renderer;
+	
 };
