@@ -28,7 +28,7 @@ int main(int argc, char* args[])
 	BAccel.set(0, 0);
 	PAccel.set(0, 0);
 	EAceel.set(0.3, 0); //step of enemy
-	PSpawn.set(0, 115);
+	PSpawn.set(40, 110);
 
 	Collider collide;
 
@@ -40,13 +40,17 @@ int main(int argc, char* args[])
 	//					  Actor(30, 60,PAccel,0.0f, ground) };
 
 	//Dynamic version of the actors array (Tanner)
-	std::vector<Actor> entitiees = { Actor(Vector2f(0, 150),0.0f, ground),
+	std::vector<Actor> entitiees = { Actor(Vector2f(0, 0),0.0f, ground),
+									 Actor(Vector2f(0, 30),0.0f, ground),
+									 Actor(Vector2f(0, 60),0.0f, ground),
+									 Actor(Vector2f(0, 90),0.0f, ground),
+									 Actor(Vector2f(0, 120),0.0f, ground),
+									 Actor(Vector2f(0, 150),0.0f, ground),
 									 Actor(Vector2f(30, 150),0.0f, ground),
-									 Actor(Vector2f(90, 130),0.0f, ground),
-									 Actor(Vector2f(150, 115),0.0f, ground),
-									 Actor(Vector2f(210, 100),0.0f, ground),
-									 Actor(Vector2f(265, 85),0.0f, ground),
-									 Actor(Vector2f(295, 85),0.0f, ground) };;
+									 Actor(Vector2f(60, 150),0.0f, ground),
+									 Actor(Vector2f(90, 150),0.0f, ground) ,
+									 Actor(Vector2f(120, 150),0.0f, ground) ,
+									 Actor(Vector2f(180, 120),0.0f, ground) };;
 
 	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
 	william.SetFrame(0, 0, 32, 40);
@@ -65,6 +69,7 @@ int main(int argc, char* args[])
 	while (gameRunning)
 	{
 
+		//PAccel.y = 1;
 		int startTicks = SDL_GetTicks();
 
 		float newTime = utilities::hireTimeInSeconds();
@@ -81,7 +86,7 @@ int main(int argc, char* args[])
 			case SDL_SCANCODE_Q:
 				break;
 			case SDL_SCANCODE_W:
-				PAccel.y = -1;
+				PAccel.y += -2;
 				break;
 
 			case SDL_SCANCODE_S:
@@ -125,37 +130,33 @@ int main(int argc, char* args[])
 			}
 		}
 
-		bool hasCollided = false;
-		//check player against each collidable tile
-	   //if (SDL_IntersectRect(&movedPlayer, &c->getComponent<CollisionComponent>().getCollider(), &intersection))
 		for (Actor& e : entitiees)
 		{
-
-			Vec4 Twilliam(william.getPos().x + PAccel.x, william.getPos().y + PAccel.y, william.getCurrentFrame().h, william.getCurrentFrame().w);
-			Vec4 ev(e.getPos().x, e.getPos().y, e.getCurrentFrame().h, e.getCurrentFrame().w);
-
 			//rect1.x < rect2.x + rect2.w &&
 			//rect1.x + rect1.w > rect2.x&&
 			//rect1.y < rect2.y + rect2.h &&
 			//rect1.h + rect1.y > rect2.y
-
-			if (william.getPos().x < e.getPos().x + 32 &&
-				william.getPos().x + 32 > e.getPos().x &&
-				william.getPos().y < e.getPos().y + 32 &&
-				william.getPos().y + 45 > e.getPos().y) {
-				std::cout << "Collide" << std::endl;
+			if (william.getPos().x + PAccel.x < e.getPos().x + 28 &&
+				william.getPos().x + PAccel.x + 30 > e.getPos().x &&
+				william.getPos().y + PAccel.y < e.getPos().y + 30 &&
+				william.getPos().y + PAccel.y + 40 > e.getPos().y)
+			{
+				if ( william.getPos().y + 40 > e.getPos().y)
+				{
+					std::cout << "X Collide" << std::endl;
+					PAccel.x = 0;
+				}
+				else {
+					std::cout << "Y Collide" << std::endl;
+				}
+				PAccel.set(0, 0);
 			}
-			//if (collide.Collide(Twilliam, ev))
-			//{
-			//	//PAccel.y = 0.0f;
-			//	hasCollided = true;
-			//	//std::cout << "Collide" << std::endl;
-			//	//std::cout << intersection.x << std::endl;
-			//}
 			else {
-				std::cout << "No Collide" << std::endl;
+				//	std::cout << "No Collide" << std::endl;
+				//PAccel.y = 1;
 			}
 		}
+
 		//william.UpdatePos(GM->PControls());
 		william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 

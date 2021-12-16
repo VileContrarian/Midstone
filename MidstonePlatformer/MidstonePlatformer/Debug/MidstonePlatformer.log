@@ -1,11 +1,7 @@
 ﻿  main.cpp
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Utilities.h(8,11): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(30,19): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(134,134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(134,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(135,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(135,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(188,24): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(191,23): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(59,12): warning C4101: 'event': unreferenced local variable
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(189,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(192,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(63,12): warning C4101: 'event': unreferenced local variable
   MidstonePlatformer.vcxproj -> C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe
