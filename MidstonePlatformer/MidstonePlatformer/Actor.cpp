@@ -13,6 +13,14 @@ Actor::Actor(Vector2f p_pos, float mass_, SDL_Texture* p_tex)
 	currentFrame.h = 32;
 }
 
+Actor::Actor(Vector2f p_pos, float mass_, int EntityHealth_, SDL_Texture* p_tex)
+:pos(p_pos), tex(p_tex), EntityHealth(EntityHealth_)
+{
+	currentFrame.x = 0;
+	currentFrame.y = 0;
+	currentFrame.w = 32;
+	currentFrame.h = 32;
+}
 SDL_Texture* Actor::getTex()
 {
 	return tex;

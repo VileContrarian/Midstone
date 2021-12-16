@@ -52,10 +52,10 @@ int main(int argc, char* args[])
 									 Actor(Vector2f(120, 150),0.0f, ground) ,
 									 Actor(Vector2f(180, 120),0.0f, ground) };;
 
-	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, character);
+	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, 100, character);
 	william.SetFrame(0, 0, 32, 40);
 	//entitiees.push_back(william);
-	Actor enemy(Vector2f(140, 50), 0.0f, guy);
+	Actor enemy(Vector2f(140, 50), 0.0f, 100, guy);
 	enemy.SetFrame(0, 0, 30, 35);
 
 	bool gameRunning = true;
@@ -197,6 +197,10 @@ int main(int argc, char* args[])
 		}
 		else if (william.getPos().x < -8) {
 			PAccel.set(0.5, 0);
+		}
+
+		while (enemy.getPos().x - william.getPos().x <= 5) {
+			william.EntityHealth -= 25;
 		}
 
 		//calculate distance
