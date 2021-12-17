@@ -53,7 +53,7 @@ int main(int argc, char* args[])
 	Player william(Vector2f(PSpawn.x, PSpawn.y), 0.0f, 100, character);
 	william.SetFrame(0, 0, 32, 40);
 	//entitiees.push_back(william);
-	Actor enemy(Vector2f(140, 50), 0.0f, 100, guy);
+	Actor enemy(Vector2f(140, 70), 0.0f, 100, guy);
 	enemy.SetFrame(0, 0, 30, 35);
 
 	bool gameRunning = true;
@@ -200,35 +200,26 @@ int main(int argc, char* args[])
 		}
 		//william.UpdatePos(Vector2f(PAccel.x, PAccel.y));
 		enemy.UpdatePos(Vector2f(EAceel.x, EAceel.y));
-		//std::cout << william.getPos().x << std::endl;
-		//enemy moves by y
+		//std::cout << enemy.getPos().x << std::endl;
+		//enemy moves by x
 		if (enemy.getPos().x > 300) {
 			EAceel.set(-0.3, 0.0);
 		}
-		else if (enemy.getPos().x < -8) {
+		else if (enemy.getPos().x < 30) {
 			EAceel.set(0.3, 0.0);
 		}
 
-		if (william.getPos().x > 300) {
-			PAccel.set(-0.5, 0);
-		}
-		else if (william.getPos().x < -8) {
-			PAccel.set(0.5, 0);
-		}
-		if (william.getPos().y > 200) {
-			william.getPos().x = 40;
-			william.getPos().y = 110;
-		}
+
 
 		////calculate distance
-		float x = william.getPos().x + 30 - enemy.getPos().x;
+		float x = william.getPos().x  - enemy.getPos().x;
 		float y = william.getPos().y - enemy.getPos().y;
 		float hyp = sqrt(x * x + y * y); // distance
 		x /= hyp;
 		y /= hyp;
 
 
-		if (hyp > 30 && hyp < 100) {
+		if (hyp > 10 && hyp < 60) {
 
 			//std::cout << "move enemy" << std::endl;
 			enemy.UpdatePos(Vector2f(x, y));
