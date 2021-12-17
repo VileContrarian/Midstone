@@ -22,7 +22,7 @@ int main(int argc, char* args[])
 	SDL_Texture* Background = window.loadTexture("assets/Starmap.png");
 	SDL_Texture* ground = window.loadTexture("assets/ground_grass_1.png");
 	SDL_Texture* character = window.loadTexture("assets/char.png");
-	SDL_Texture* guy = window.loadTexture("assets/char.png");
+	SDL_Texture* guy = window.loadTexture("assets/ghost.png");
 
 	Vec2 PAccel, PSpawn, BAccel, EAceel;
 	BAccel.set(0, 0);
@@ -207,6 +207,11 @@ int main(int argc, char* args[])
 		}
 		else if (enemy.getPos().x < 30) {
 			EAceel.set(0.3, 0.0);
+		}
+
+		if (william.getPos().y > 200) {
+			william.getPos().x = 40;
+			william.getPos().y = 110;
 		}
 
 
