@@ -1,7 +1,8 @@
 ﻿  main.cpp
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\Utilities.h(8,11): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(30,19): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(189,24): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(192,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(167,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(206,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(209,23): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\MidstonePlatformer\main.cpp(63,12): warning C4101: 'event': unreferenced local variable
   MidstonePlatformer.vcxproj -> C:\Users\Mack\Documents\GitHub\Midstone\MidstonePlatformer\Debug\MidstonePlatformer.exe

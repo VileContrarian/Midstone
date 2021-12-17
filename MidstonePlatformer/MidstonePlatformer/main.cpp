@@ -30,8 +30,6 @@ int main(int argc, char* args[])
 	EAceel.set(0.3, 0); //step of enemy
 	PSpawn.set(40, 110);
 
-	Collider collide;
-
 	//Actor block = Actor(0, 0, PAccel, 0.0f, ground);
 
 	//Actor entities[4] = { Actor(0, 0,PAccel,0.0f, ground),
@@ -59,6 +57,8 @@ int main(int argc, char* args[])
 	enemy.SetFrame(0, 0, 30, 35);
 
 	bool gameRunning = true;
+	bool jump = false;
+	int tick = 0;
 
 	SDL_Event event;
 
@@ -69,7 +69,19 @@ int main(int argc, char* args[])
 	while (gameRunning)
 	{
 
-		//PAccel.y = 1;
+		if (tick>0){
+			if (tick >= 40) {
+				jump = false;
+				
+			}
+			else {
+				tick++;
+			}
+		}
+		if (!jump) {
+			PAccel.y = 1;
+			tick = 0;
+		}
 		int startTicks = SDL_GetTicks();
 
 		float newTime = utilities::hireTimeInSeconds();
@@ -86,11 +98,13 @@ int main(int argc, char* args[])
 			case SDL_SCANCODE_Q:
 				break;
 			case SDL_SCANCODE_W:
-				PAccel.y += -2;
+				PAccel.y = -1;
+				jump = true;
+				tick = 1;
 				break;
 
 			case SDL_SCANCODE_S:
-				PAccel.y = 1;
+				//PAccel.y = 1;
 				break;
 
 			case SDL_SCANCODE_A:
@@ -111,11 +125,13 @@ int main(int argc, char* args[])
 			case SDL_SCANCODE_Q:
 				break;
 			case SDL_SCANCODE_W:
-				PAccel.y = 0;
+				PAccel.y = 1;
+				jump = false;
+				tick = 0;
 				break;
 
 			case SDL_SCANCODE_S:
-				PAccel.y = 0;
+				PAccel.y = 1;
 				break;
 
 			case SDL_SCANCODE_A:
@@ -141,15 +157,16 @@ int main(int argc, char* args[])
 				william.getPos().y + PAccel.y < e.getPos().y + 30 &&
 				william.getPos().y + PAccel.y + 40 > e.getPos().y)
 			{
-				if ( william.getPos().y + 40 > e.getPos().y)
+				if (william.getPos().y + 40 > e.getPos().y)
 				{
 					std::cout << "X Collide" << std::endl;
 					PAccel.x = 0;
 				}
 				else {
 					std::cout << "Y Collide" << std::endl;
+					william.UpdatePos(Vector2f(PAccel.x, -0.01));
+					PAccel.y = 0;
 				}
-				PAccel.set(0, 0);
 			}
 			else {
 				//	std::cout << "No Collide" << std::endl;
@@ -198,12 +215,12 @@ int main(int argc, char* args[])
 		else if (william.getPos().x < -8) {
 			PAccel.set(0.5, 0);
 		}
-
-		while (enemy.getPos().x - william.getPos().x <= 5) {
-			william.EntityHealth -= 25;
+		if (william.getPos().y > 200) {
+			william.getPos().x = 40;
+			william.getPos().y = 110;
 		}
 
-		//calculate distance
+		////calculate distance
 		float x = william.getPos().x + 30 - enemy.getPos().x;
 		float y = william.getPos().y - enemy.getPos().y;
 		float hyp = sqrt(x * x + y * y); // distance
